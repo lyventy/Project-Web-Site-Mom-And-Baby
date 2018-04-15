@@ -1,0 +1,51 @@
+<main class="app-content">
+    <div class="app-title">
+      <div>
+        <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+        <p>A free and modular admin template</p>
+      </div>
+      <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+      </ul>
+    </div>
+    <section>
+      <div class="container-fluid">
+        <!-- Example DataTables Card-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <button type="button" class="btn btn-primary fa fa-plus text-light float-right addBoPhan" data-toggle="modal" data-target="#addBoPhan" (click)="Reset(formBoPhan)">
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover" id="boPhanTable" width="100%">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Tên Bộ Phận</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Email</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let boPhans of dataBoPhans, let i = index">
+                    <td scope="row">{{i+1}}</td>
+                    <td>{{ boPhans.TENBOPHAN }}</td>
+                    <td>{{ boPhans.SDT_BOPHAN }}</td>
+                    <td>{{ boPhans.EMAIL_DOITAC }}</td>
+                    <td>
+                      <a class="fa fa-check text-warning mt-1 mb-1 ml-1" data-toggle="modal" data-target="#editBoPhans" (click)="getupdateBoPhans(boPhans)"></a>
+                      <a class="fa fa-remove text-danger mt-1 mb-1 ml-1" (click)="deleteBoPhans(boPhans.MABOPHAN)"></a>
+            
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

@@ -1,0 +1,104 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "shopmevabe"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        
+        "../src/assets/vendor/bootstrap/css/bootstrap.min.css",
+        "../src/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
+        "../src/assets/fonts/iconic/css/material-design-iconic-font.min.css",
+        "../src/assets/fonts/linearicons-v1.0.0/icon-font.min.css",
+        "../src/assets/vendor/animate/animate.css",
+        "../src/assets/vendor/css-hamburgers/hamburgers.min.css",
+        "../src/assets/vendor/animsition/css/animsition.min.css",
+        "../src/assets/vendor/select2/select2.min.css",
+        "../src/assets/vendor/daterangepicker/daterangepicker.css",
+        "../src/assets/vendor/MagnificPopup/magnific-popup.css",
+        "../src/assets/vendor/perfect-scrollbar/perfect-scrollbar.css",
+        "../src/assets/css/fontastic.css",
+        "../src/assets/css/grasp_mobile_progress_circle-1.0.0.min.css",
+        "../src/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
+        "../src/assets/css/style.default.css",
+        "../src/assets/vendor/datatable/datatables.min.css",
+        "../src/assets/css/mainAdmin.css",
+        "../src/assets/vendor/dataTable/Buttons-1.5.1/css/buttons.bootstrap4.min.css"
+
+      ],
+      "scripts": [
+        "../src/assets/vendor/jquery/jquery-3.2.1.min.js",
+        "../src/assets/vendor/animsition/js/animsition.min.js",
+        "../src/assets/vendor/bootstrap/js/popper.js",
+        "../src/assets/vendor/bootstrap/js/bootstrap.min.js",
+        "../src/assets/vendor/select2/select2.min.js",
+        "../src/assets/vendor/daterangepicker/moment.min.js",
+        "../src/assets/vendor/daterangepicker/daterangepicker.js",
+        "../src/assets/vendor/parallax100/parallax100.js",
+        "../src/assets/vendor/MagnificPopup/jquery.magnific-popup.min.js",
+        "../src/assets/vendor/isotope/isotope.pkgd.min.js",
+        "../src/assets/vendor/sweetalert/sweetalert.min.js",
+        "../src/assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js",
+        "../src/assets/js/grasp_mobile_progress_circle-1.0.0.min.js",
+        "../src/assets/vendor/jquery.cookie/jquery.cookie.js",
+
+        "../src/assets/vendor/jquery-validation/jquery.validate.min.js",
+        "../src/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
+        "../src/assets/js/charts-home.js",
+        "../src/assets/js/plugins/pace.min.js",
+        "../src/assets/js/plugins/chart.js",
+        "../src/assets/vendor/datatable/datatables.min.js",
+        "../src/assets/vendor/select2/js/select2.full.min.js",
+        "../src/assets/vendor/datatable/Buttons-1.5.1/js/buttons.bootstrap4.min.js",
+        "../src/assets/js/frontAdmin.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}
