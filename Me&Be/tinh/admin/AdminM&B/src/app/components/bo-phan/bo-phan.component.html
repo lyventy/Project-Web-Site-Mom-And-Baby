@@ -1,0 +1,189 @@
+<main class="app-content" style="font-size: 1.1em;">
+    <div class="app-title">
+      <div>
+        <h1><i class="fa fa-dashboard"></i> Bộ Phận Vận Chuyển</h1>
+        <p>Thông tin bộ phận vận chuyển</p>
+      </div>
+      <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a href="admin/bophan">Bộ Phận Vận Chuyển</a></li>
+      </ul>
+    </div>
+    <section>
+      <div class="container-fluid" >
+        <!-- Example DataTables Card-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <button type="button" class="btn btn-primary fa fa-plus text-light float-right addBoPhan" data-toggle="modal" data-target="#addBoPhan" (click)="Reset(formBoPhan)">
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover" id="boPhanTable" width="100%">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Tên Bộ Phận</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Email</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let boPhans of dataBoPhans, let i = index">
+                    <td scope="row">{{i+1}}</td>
+                    <td>{{ boPhans.TENBOPHAN }}</td>
+                    <td>{{ boPhans.SDT_BOPHAN }}</td>
+                    <td>{{ boPhans.EMAIL_BOPHAN }}</td>
+                    <td>
+                      <a class="fa fa-check text-warning" data-toggle="modal" data-target="#editBoPhan" (click)="getupdateBoPhans(boPhans)"></a>
+                      <a class="fa fa-remove text-danger" data-toggle="modal" data-target="#deletemodal"(click)="getupdateBoPhans(boPhans)"></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+       <!-- modal add-->
+       <div id="addBoPhan" class="modal fade" style="font-size: 18px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="modal-title"style="font-size:20px;" >Thông Tin Bộ Phận Vận Chuyển</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form #formBoPhan="ngForm">
+                    <div class="form-group">
+                        <label for="majorID">Tên bộ phận vận chuyển</label>
+                        <div *ngIf="TENBOPHAN2.invalid && (TENBOPHAN2.dirty || TENBOPHAN2.touched)"  class="alert alert-danger">                 
+                            <div *ngIf="TENBOPHAN2.errors?.required" >
+                                Tên bộ phận vận chuyển không được trống.
+                              </div>
+                        </div>
+                        <div *ngIf="TENBOPHAN2.value">
+                          <div *ngIf="show == 'Được dùng'" class="alert alert-success">
+                            {{show}}
+                          </div>
+                          <div *ngIf="show == 'Bị trùng với cơ sở dữ liệu'" class="alert alert-danger">
+                            {{show}}
+                          </div>
+                        </div>
+                        <input type="text" (keyup)=keyup(TENBOPHAN2.value) [(ngModel)]="TENBOPHAN" style="font-size:16px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;"  class="form-control" name="TENBOPHAN" placeholder="Tên bộ phận vận chuyển" #TENBOPHAN2="ngModel" required>
+                      
+                      </div>
+                  <div class="form-group">
+                    <label for="SDT_BOPHAN">Số điện thoại<img src="" alt="" sizes="" srcset=""></label>
+                    <div *ngIf="SDT_BOPHAN2.invalid && (SDT_BOPHAN2.dirty || SDT_BOPHAN2.touched)"  class="alert alert-danger">                 
+                        <div *ngIf="SDT_BOPHAN2.errors?.required">
+                            Số điện thoại không được trống.
+                        </div>
+                    </div>
+                    <input type="text" [(ngModel)]="SDT_BOPHAN" style="font-size:16px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;"  class="form-control" name="SDT_BOPHAN" placeholder="Số điện thoại" #SDT_BOPHAN2="ngModel" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="EMAIL_DOITAC">Email<img src="" alt="" sizes="" srcset=""></label>
+                      <div *ngIf="EMAIL_DOITAC2.invalid && (EMAIL_DOITAC2.dirty || EMAIL_DOITAC2.touched)"  class="alert alert-danger">                 
+                          <div *ngIf="EMAIL_DOITAC2.errors?.required">
+                              Email không được trống.
+                          </div>
+                      </div>
+                      <input type="text" [(ngModel)]="EMAIL_BOPHAN"  style="font-size:16px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;" class="form-control" name="EMAIL_BOPHAN" placeholder="Email" #EMAIL_DOITAC2="ngModel" required>
+                    </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                  <button [disabled]="formBoPhan.invalid || !kiemtra" (click)="onSubmit(formBoPhan)" type="submit" id="btnSaveAdd" class="btn btn-primary" data-dismiss="modal">Thêm</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <!-- end modal add -->
+        <!-- modal edit  -->
+        <div id="editBoPhan" class="modal fade" style="font-size: 18px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <p class="modal-title"style="font-size:20px;" >Thông Tin Bộ Phận Vận Chuyển</p>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form #formEditBoPhans="ngForm">
+                      <div class="form-group">
+                          <label for="majorID">Tên bộ phận vận chuyển</label>
+                          <div *ngIf="TENBOPHAN2.invalid && (TENBOPHAN2.dirty || TENBOPHAN2.touched)"  class="alert alert-danger">                 
+                              <div *ngIf="TENBOPHAN2.errors?.required">
+                                  Tên bộ phận vận chuyển không được trống.
+                                </div>
+                          </div>
+                          <div *ngIf="TENBOPHAN2.value">
+                            <div *ngIf="show == 'Được dùng'" class="alert alert-success">
+                              {{show}}
+                            </div>
+                            <div *ngIf="show == 'Bị trùng với cơ sở dữ liệu'" class="alert alert-danger">
+                              {{show}}
+                            </div>
+                          </div>
+                          <input type="text" (keyup)=keyup(TENBOPHAN2.value) [(ngModel)]="TENBOPHAN" style="font-size:16px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;"  class="form-control" name="TENBOPHAN" placeholder="Tên bộ phận vận chuyển" #TENBOPHAN2="ngModel" required>
+                        
+                        </div>
+                    <div class="form-group">
+                      <label for="SDT_BOPHAN">Số điện thoại<img src="" alt="" sizes="" srcset=""></label>
+                      <div *ngIf="SDT_BOPHAN2.invalid && (SDT_BOPHAN2.dirty || SDT_BOPHAN2.touched)"  class="alert alert-danger">                 
+                          <div *ngIf="SDT_BOPHAN2.errors?.required">
+                              Số điện thoại không được trống.
+                          </div>
+                      </div>
+                      <input type="text" [(ngModel)]="SDT_BOPHAN" style="font-size:16px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;"  class="form-control" name="SDT_BOPHAN" placeholder="Số điện thoại" #SDT_BOPHAN2="ngModel" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="EMAIL_DOITAC">Email<img src="" alt="" sizes="" srcset=""></label>
+                        <div *ngIf="EMAIL_DOITAC2.invalid && (EMAIL_DOITAC2.dirty || EMAIL_DOITAC2.touched)"  class="alert alert-danger">                 
+                            <div *ngIf="EMAIL_DOITAC2.errors?.required">
+                                Email không được trống.
+                            </div>
+                        </div>
+                        <input type="text" [(ngModel)]="EMAIL_BOPHAN"  style="font-size:16px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;" class="form-control" name="EMAIL_BOPHAN" placeholder="Email" #EMAIL_DOITAC2="ngModel" required>
+                      </div>
+                      <input type="hidden" [(ngModel)]="MABOPHAN" class="form-control" name="MABOPHAN">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button [disabled]="formEditBoPhans.invalid" (click)="updateBoPhans(formEditBoPhans)" id="btnSaveUpdate"type="submit" class="btn btn-primary" data-dismiss="modal">Lưu</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end modal edit -->
+          <!--Confirm delete-->
+          <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Xác nhận xóa!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 Bạn có muốn xóa không?
+                  <input type="hidden" [(ngModel)]="MABOPHAN" class="form-control" name="MABOPHAN">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="deleteBoPhans(MABOPHAN)"  data-dismiss="modal" id="btnXoaCF">Đồng Ý</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+  </main>
