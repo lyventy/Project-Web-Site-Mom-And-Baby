@@ -38,7 +38,10 @@
         "../src/assets/vendor/datatable/datatables.min.css",
         "../src/assets/css/mainAdmin.css",
         "../src/assets/vendor/dataTable/Buttons-1.5.1/css/buttons.bootstrap4.min.css",
-        "../src/assets/vendor/pnotify/pnotify.custom.min.css"
+        "../src/assets/vendor/pnotify/animate.min.css",
+        "../src/assets/vendor/pnotify/PnotifyBrightTheme.css",
+        "../src/assets/vendor/jquery-confirm/jquery-confirm.min.css",
+        "../src/assets/vendor/fancybox/jquery.fancybox.css"
       ],
       "scripts": [
         "../src/assets/vendor/jquery/jquery-3.2.1.min.js",
@@ -55,7 +58,6 @@
         "../src/assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js",
         "../src/assets/js/grasp_mobile_progress_circle-1.0.0.min.js",
         "../src/assets/vendor/jquery.cookie/jquery.cookie.js",
-        "../src/assets/vendor/pnotify/pnotify.custom.min.js",
         "../src/assets/vendor/jquery-validation/jquery.validate.min.js",
         "../src/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
         "../src/assets/js/charts-home.js",
@@ -64,6 +66,11 @@
         "../src/assets/vendor/datatable/datatables.min.js",
         "../src/assets/vendor/select2/js/select2.full.min.js",
         "../src/assets/vendor/datatable/Buttons-1.5.1/js/buttons.bootstrap4.min.js",
+        "../src/assets/vendor/jquery-confirm/jquery-confirm.min.js",
+        "../src/assets/vendor/pnotify/Pnotify.js",
+        "../src/assets/vendor/pnotify/PnotifyAnimate.js",
+        "../src/assets/vendor/pnotify/PnotifyConfirm.js",
+        "../src/assets/vendor/fancybox/jquery.fancybox.js",
         "../src/assets/js/frontAdmin.js"
       ],
       "environmentSource": "environments/environment.ts",

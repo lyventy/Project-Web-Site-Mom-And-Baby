@@ -13,13 +13,15 @@ import { TrangchuAdminComponent } from './components/trangchu-admin/trangchu-adm
 import { LoginAdminComponent } from './components/login-admin/login-admin.component';
 import { BoPhanComponent } from './components/bo-phan/bo-phan.component';
 import { NguoiDungComponent } from './components/nguoi-dung/nguoi-dung.component';
+import { AnhMoTaComponent } from './components/anh-mo-ta/anh-mo-ta.component';
 
 const routes: Routes = [
-  { path: 'loginAdmin', component: LoginAdminComponent},
+  { path: 'login', component: LoginAdminComponent},
   { path: 'admin', component: BoardAdminComponent, children:[
       {path: '', component: TrangchuAdminComponent  },
       {path: 'bophan', component: BoPhanComponent  },
       {path: 'user', component: NguoiDungComponent  },
+      {path: 'anhMoTa', component: AnhMoTaComponent  },
   ]}
 ];
 
@@ -31,7 +33,7 @@ const routes: Routes = [
     NavAdminComponent, 
     TrangchuAdminComponent, 
     LoginAdminComponent, 
-    BoPhanComponent, NguoiDungComponent
+    BoPhanComponent, NguoiDungComponent, AnhMoTaComponent
   ],
   imports: [
     BrowserModule,

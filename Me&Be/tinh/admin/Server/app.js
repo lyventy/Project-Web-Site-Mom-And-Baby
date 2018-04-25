@@ -10,16 +10,17 @@ app.use(function(req, res, next){
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
-
+app.use('/img/moTa',express.static(__dirname+'/img/moTa'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 //bo phan
 var bophan = require('./controller/boPhan');
 app.use('/bophan', bophan);
-//get san pham User
-var sanphamU = require('./controller/User/getSP');
-app.use('/sanphamU', sanphamU);
+//anh mo ta
+var anhMoTa= require('./controller/anhMoTa');
+app.use('/anhMoTa',anhMoTa);
+
 var server = app.listen(88,function(){
     var host = server.address().address
     var port = server.address().port
